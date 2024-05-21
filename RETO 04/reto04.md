@@ -88,88 +88,32 @@ Hallazgos:
 + /images/: Directory indexing found.
 + /test.php: This might be interesting.
 
-
-## Enumeracion de directorios y paginas.
+## Enumeracion de directorios y paginas
 
 ```bash
 dirb http://192.168.98.150
 ```
 
+![alt text](image-13.png)
+
+Tambien puedo hacer una busqueda mas enfocada en ciertos archivos mediante el uso de diccionarios y enfocando a ciertos elementos.
+
 ```bash
------------------
-DIRB v2.22    
-By The Dark Raver
------------------
-
-START_TIME: Sun May 19 03:50:17 2024
-URL_BASE: http://192.168.98.150/
-WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
-
------------------
-
-GENERATED WORDS: 4612                                                          
-
----- Scanning URL: http://192.168.98.150/ ----
-==> DIRECTORY: http://192.168.98.150/images/            
-+ http://192.168.98.150/index.html (CODE:200|SIZE:10671)
-+ http://192.168.98.150/index.php (CODE:200|SIZE:969)   
-==> DIRECTORY: http://192.168.98.150/javascript/        
-+ http://192.168.98.150/server-status (CODE:403|SIZE:279
-                                                        
----- Entering directory: http://192.168.98.150/images/ -
-(!) WARNING: Directory IS LISTABLE. No need to scan it. 
-    (Use mode '-w' if you want to scan it anyway)
-                                                        
----- Entering directory: http://192.168.98.150/javascrip
-==> DIRECTORY: http://192.168.98.150/javascript/events/ 
-                                                        
----- Entering directory: http://192.168.98.150/javascrip
-+ http://192.168.98.150/javascript/events/events (CODE:2
-                                                        
------------------
-END_TIME: Sun May 19 03:50:33 2024
-DOWNLOADED: 13836 - FOUND: 4
-
-```
-
-```
 dirb http://192.168.98.150 /usr/share/dirb/wordlists/common.txt -X .html,.php,.txt,.sh,.jsp,.xml
-```
-
-```
------------------
-DIRB v2.22    
-By The Dark Raver
------------------
-
-START_TIME: Mon May 20 04:02:10 2024
-URL_BASE: http://192.168.98.150/
-WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
-EXTENSIONS_LIST: (.html,.php,.txt,.sh,.jsp,.xml) | (.html)(.php)(.txt)(.sh)(.jsp)(.xml) [NUM = 6]
-
------------------
-
-GENERATED WORDS: 4612                                                          
-
----- Scanning URL: http://192.168.98.150/ ----
-+ http://192.168.98.150/comments.txt (CODE:200|SIZE:1)                                              
-+ http://192.168.98.150/index.html (CODE:200|SIZE:10671)                                            
-+ http://192.168.98.150/index.php (CODE:200|SIZE:969)                                               
-+ http://192.168.98.150/test.php (CODE:200|SIZE:37)                                                 
-                                                                                                    
------------------
-END_TIME: Mon May 20 04:02:19 2024
-DOWNLOADED: 27672 - FOUND: 4
-
 ```
 
 ![alt text](image-12.png)
 
+```bash
+dirb http://192.168.98.150 /usr/share/dirb/wordlists/big.txt -X .html,.php,.txt,.sh,.jsp,.xml,.js
+```
+
+
+Uso la herramienta dirsearch por si existieran otros directorios que dirb no los haya detectado.
 
 ```bash
 dirsearch -u http://192.168.98.150 -i200,301
 ```
-
 
 ```
 
@@ -194,6 +138,33 @@ Task Completed
 ```
 
 ![alt text](image-6.png)
+
+
+
+Obtengo los siguientes resultados.:
+
+CODE 200
+
++ http://192.168.98.150/comentarios.php (CODE:200 SIZE:665)
++ http://192.168.98.150/comments.txt (CODE:200|SIZE:1)
++ http://192.168.98.150/index.html (CODE:200|SIZE:10671)
++ http://192.168.98.150/index.php (CODE:200|SIZE:969)
++ http://192.168.98.150/test.php (CODE:200|SIZE:37)  
++ http://192.168.98.150/javascript/events/events (CODE:200|SIZE:37)
++ /index.php/login/ 
+
+DIRECTORY:
++ http://192.168.98.150/images/
++ http://192.168.98.150/javascript/
++  http://192.168.98.150/javascript/events/
+
+CODE 403
+
++ http://192.168.98.150/server-status (CODE:403|SIZE:279)
+
+## Navegacion en la web de la maquina
+
+Accedemos a la direccion web expuesta en el puerto 80 (http)
 
 http://192.168.98.150/index.php
 
