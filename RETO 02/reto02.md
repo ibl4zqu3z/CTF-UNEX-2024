@@ -1,24 +1,24 @@
 # RETO 02 CTF UNEX 2024
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 Descargo los ficheros que nos dan: Reto02.zip y los descomprimo en mi carpeta de trabajo para este reto.
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 Obtengo los siguientes ficheros.
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
 Según me indica el reto tengo que ejecutar el motor V8.
 
 Con los permisos actuales puedo realizarlo, por lo que ejecuto V8.
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 Nos pide que ejecutemos la funcion `ctf24()`
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
 
 Al ejecutar nos ha dado todo el codigo de la funcion:
 
@@ -69,7 +69,7 @@ let arr = ['e', 'x', 'p', 'o', '9', '2'];
 
 Compruebo que se queda almacenado:
 
-![alt text](image-5.png)
+![alt text](images/image-5.png)
 
 Ahora tenemos que adaptar las propiedades del array para que cumpla los requerimientos del programa ctf24.
 
@@ -79,11 +79,11 @@ Para ello le pasamos el siguiente codigo:
 let specialArray = new Proxy(arr, { get(target, prop) { if (prop === 'length') { return -1; } return target[prop]; }});
 ```
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
 Ejecuto ahora la funcion pasando como parametros el array especial.
 
-![alt text](image-7.png)
+![alt text](images/image-7.png)
 
 Nos devuelve un codigo que por su estructura perece estar codificado en base64 
 
@@ -97,7 +97,7 @@ Decodifico el texto de base64 con el comando:
 echo -n "ZmxhZ3tlX1hwMDl5Ml99Cg==" | base64 -d
 ```
 
-![alt text](image-8.png)
+![alt text](images/image-8.png)
 
 y obtengo la flag
 
@@ -107,8 +107,8 @@ flag{e_Xp09y2_}
 
 La introduzco 
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 
 Y compruebo que la da por valida.
 
-![alt text](image-10.png)
+![alt text](images/image-10.png)

@@ -1,6 +1,6 @@
 # CTF-UNEX-2024
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 ## Retos
 

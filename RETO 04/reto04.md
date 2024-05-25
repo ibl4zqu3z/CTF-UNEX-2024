@@ -15,11 +15,11 @@ La máquina virtual debe tener un adaptador de red en modo bridge
 
 Descargo la máquina y configuro según las indicaciones:
 
-![alt text](image-7.png)
+![alt text](images/image-7.png)
 
 La maquina nos indica su IP en la red en pantalla, de todas formas compruebo que puedo realizar ping desde mi maquina de pentesting kali.
 
-![alt text](image-9.png)
+![alt text](images/image-9.png)
 
 ## Escaneo de puertos y servicios
 
@@ -29,7 +29,7 @@ Realizo un escaneo de la maquina mediante **escaneo sigiloso** o **stealth scan*
 sudo nmap -sS -sC -sV -O 192.168.98.150
 ```
 
-![alt text](image-10.png)
+![alt text](images/image-10.png)
 
 ```bash
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-05-20 03:48 EDT
@@ -66,7 +66,7 @@ El sistema operativo de la maquina es Linux y la version esta entre la 4.15 y 5.
 
 nikto -h 192.168.98.150
 
-![alt text](image-11.png)
+![alt text](images/image-11.png)
 
 Resultados:
 
@@ -94,7 +94,7 @@ Hallazgos:
 dirb http://192.168.98.150
 ```
 
-![alt text](image-13.png)
+![alt text](images/image-13.png)
 
 Tambien puedo hacer una busqueda mas enfocada en ciertos archivos mediante el uso de diccionarios y enfocando a ciertos elementos.
 
@@ -102,7 +102,7 @@ Tambien puedo hacer una busqueda mas enfocada en ciertos archivos mediante el us
 dirb http://192.168.98.150 /usr/share/dirb/wordlists/common.txt -X .html,.php,.txt,.sh,.jsp,.xml
 ```
 
-![alt text](image-12.png)
+![alt text](images/image-12.png)
 
 ```bash
 dirb http://192.168.98.150 /usr/share/dirb/wordlists/big.txt -X .html,.php,.txt,.sh,.jsp,.xml,.js
@@ -137,7 +137,7 @@ Target: http://192.168.98.150/
 Task Completed 
 ```
 
-![alt text](image-6.png)
+![alt text](images/image-6.png)
 
 
 
@@ -168,21 +168,21 @@ Accedemos a la direccion web expuesta en el puerto 80 (http)
 
 http://192.168.98.150/index.php
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 http://192.168.98.150/images/
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 Check which extensions is executing the Apache server. To search them you can execute:
 
 grep -R -B1 "httpd-php" /etc/apache2
 
 
-![alt text](image-2.png)
+![alt text](images/image-2.png)
 
-![alt text](image-3.png)
+![alt text](images/image-3.png)
 
 https://www.exploit-db.com/exploits/50512
 
-![alt text](image-4.png)
+![alt text](images/image-4.png)
